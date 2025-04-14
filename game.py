@@ -1,12 +1,35 @@
-# -- Pygame Game Template -- #
-
+# -- Imports -- #
 import pygame
 import sys
-import config # Import the config module 
+
+# -- Constants -- #
+   # - Colors - # 
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+YELLOW = (255, 255, 0)
+BROWN = (153, 76, 0)
+PURPLE = (204, 0, 204)
+ORANGE =  (255, 128, 0)
+SKY_BLUE = (0, 255, 255)
+
+   # - Widow - #
+WINDOW_WIDTH = 800
+WINDOW_HEIGHT = 600
+
+   # - Title - # 
+TITLE = "My Pygame Project"
+
+   # - Frame Rate - #
+FPS = 60
+
+
 def init_game (): 
     pygame.init()
-    screen = pygame.display.set_mode((config.WINDOW_WIDTH, config.WINDOW_HEIGHT)) # Use constants from config
-    pygame.display.set_caption(config.TITLE)
+    screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT)) # Use constants from config
+    pygame.display.set_caption(TITLE)
     return screen
 
 
@@ -25,11 +48,11 @@ def main():
    running = True
    while running:
       running = handle_events()
-      screen.fill(config.WHITE) # Use color from config
+      screen.fill(WHITE) # Use color from config
       pygame.display.flip()
 
       # -- Limit the frame rate to the specified frames per second (FPS) -- #
-      clock.tick(config.FPS) # Use the clock to control the frame rate
+      clock.tick(FPS) # Use the clock to control the frame rate
 
    pygame.quit()
    sys.exit()
