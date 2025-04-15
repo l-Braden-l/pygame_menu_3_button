@@ -34,14 +34,23 @@ def init_game ():
     pygame.display.set_caption(TITLE)
     return screen
 
+# -- Button Click Function -- # 
+def button_Click_func(): 
+   button_click = pygame.mixer.Sound('c:\\sounds\\button-pressed-38129.mp3')  
+   pygame.mixer.Sound.play(button_click) 
+   return button_click
+
+# -- Button Hover Function -- # 
+def button_hover_func(): 
+   button_hover = pygame.mixer.Sound("C:\\sounds\\button-305770.mp3")  
+   pygame.mixer.Sound.play(button_hover) 
+   return button_hover
+
 
 def main():
    screen = init_game()
    clock = pygame.time.Clock()  # Initialize the clock here
 
-   # -- Load Sounds -- # 
-   button_hover = pygame.mixer.music.load("C:\\sounds\\button-305770.mp3")  # Load the sound here
-   button_press = pygame.mixer.music.load('c:\\sounds\\button-pressed-38129.mp3')
    # -- Font -- #
    font_style = pygame.font.SysFont("Arial", 40)
    header = font_style.render("Main Menu", True, BLUE)
@@ -58,6 +67,8 @@ def main():
    button2_text = font_style.render('OPTIONS', True, BLACK)
    button3_text = font_style.render('EXIT', True, BLACK)
 
+
+
    running = True
    while running:
       mouse_pos = pygame.mouse.get_pos()
@@ -70,12 +81,13 @@ def main():
             if event.button == 1:
                if button1.collidepoint(mouse_pos):
                   print("Now playing the game!")
-                  pygame.mixer.music.play()  # Play the sound when clicked
+                  button_Click_func()
+                    # Play the sound when clicked
                elif button2.collidepoint(mouse_pos):
                   print("Game options!")
-                  pygame.mixer.music.play()
+                  button_Click_func()
                elif button3.collidepoint(mouse_pos):
-                  pygame.mixer.music.play()
+                  button_Click_func()
                   pygame.quit()
                   sys.exit()
          elif event.type == pygame.KEYDOWN:
@@ -87,7 +99,7 @@ def main():
          button_color1 = (0, 255, 0)
       else:
          button_color1 = (30, 255, 30)
-
+         
       if button2.collidepoint(mouse_pos):
          button_color2 = (0, 255, 0)
       else:
