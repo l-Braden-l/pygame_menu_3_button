@@ -98,17 +98,17 @@ def main():
       if button1.collidepoint(mouse_pos):
          button_color1 = (0, 255, 0)
       else:
-         button_color1 = (30, 255, 30)
+         button_color1 = (90, 255, 90)
          
       if button2.collidepoint(mouse_pos):
          button_color2 = (0, 255, 0)
       else:
-         button_color2 = (30, 255, 30)
+         button_color2 = (90, 255, 90)
 
       if button3.collidepoint(mouse_pos): 
          button_color3 = (0, 255, 0)
       else:
-         button_color3 = (30, 255, 30)
+         button_color3 = (90, 255, 90)
 
       screen.fill(WHITE)  # Use color from config
 
