@@ -38,7 +38,6 @@ def init_game ():
 def button_Click_func(): 
    button_click = pygame.mixer.Sound('c:\\sounds\\button-pressed-38129.mp3')  
    pygame.mixer.Sound.play(button_click) 
-   button_x = -500
 
 
 # -- Button Hover Function -- # 
@@ -47,7 +46,7 @@ def button_hover_func():
    pygame.mixer.Sound.play(button_hover) 
 
 
-def main(button_x):
+def main():
    screen = init_game()
    clock = pygame.time.Clock()  # Initialize the clock here
 
@@ -68,6 +67,11 @@ def main(button_x):
    button2_text = font_style.render('OPTIONS', True, BLACK)
    button3_text = font_style.render('EXIT', True, BLACK)
 
+   # -- Update Menu -- #
+   headx = 300 
+
+    # -- Load and Set Up Graphic -- #
+   background_image = pygame.image.load("C:\Project-Text-Menu\Pixel_Art_Background.png").convert()
 
 
    running = True
@@ -83,7 +87,12 @@ def main(button_x):
                if button1.collidepoint(mouse_pos):
                   print("Now playing the game!")
                   button_Click_func()
-                  button_x = -500
+                  button1.x = -500
+                  button2.x = -500
+                  button3.x = -500
+                  headx = -300 
+                  screen.blit(background_image, [0,0])
+            
                     # Play the sound when clicked
                elif button2.collidepoint(mouse_pos):
                   print("Game options!")
@@ -92,6 +101,8 @@ def main(button_x):
                   button_Click_func()
                   pygame.quit()
                   sys.exit()
+            else: 
+               screen.fill(WHITE)
          elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                return False
@@ -112,9 +123,7 @@ def main(button_x):
       else:
          button_color3 = (90, 255, 90)
 
-      screen.fill(WHITE)  # Use color from config
-
-      screen.blit(header, (300, 150))
+      screen.blit(header, (headx, 150))
 
       # Draw Rectangles
       pygame.draw.rect(screen, button_color1, button1)
