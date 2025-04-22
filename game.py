@@ -38,16 +38,16 @@ def init_game ():
 def button_Click_func(): 
    button_click = pygame.mixer.Sound('c:\\sounds\\button-pressed-38129.mp3')  
    pygame.mixer.Sound.play(button_click) 
-   return button_click
+   button_x = -500
+
 
 # -- Button Hover Function -- # 
 def button_hover_func(): 
    button_hover = pygame.mixer.Sound("C:\\sounds\\button-305770.mp3")  
    pygame.mixer.Sound.play(button_hover) 
-   return button_hover
 
 
-def main():
+def main(button_x):
    screen = init_game()
    clock = pygame.time.Clock()  # Initialize the clock here
 
@@ -58,9 +58,10 @@ def main():
    # -- Button Variables -- #
    button_length = 200
    button_height = 50
-   button1 = pygame.Rect(280, 200, button_length, button_height)
-   button2 = pygame.Rect(280, 270, button_length, button_height)
-   button3 = pygame.Rect(280, 340, button_length, button_height)
+   button_x = 280
+   button1 = pygame.Rect(button_x, 200, button_length, button_height)
+   button2 = pygame.Rect(button_x, 270, button_length, button_height)
+   button3 = pygame.Rect(button_x, 340, button_length, button_height)
 
    # -- Button Text -- #
    button1_text = font_style.render('PLAY', True, BLACK)
@@ -82,6 +83,7 @@ def main():
                if button1.collidepoint(mouse_pos):
                   print("Now playing the game!")
                   button_Click_func()
+                  button_x = -500
                     # Play the sound when clicked
                elif button2.collidepoint(mouse_pos):
                   print("Game options!")
